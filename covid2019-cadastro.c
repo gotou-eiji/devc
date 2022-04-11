@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-//funções
+//funÃ§Ãµes
 struct pessoa{
 	char cpf[20];
 	char nome[100];
@@ -10,7 +10,7 @@ struct pessoa{
 };
 struct pessoa paciente;
 int total_pontos,sintomas_pontos[10]={5,1,1,1,3,10,1,1,10,3};
-char sintomas_descricao[10][200]={"Tem febre?","Tem dor de cabeça?","Tem secreção nasal ou espirros?","Tem dor ou irritação na garganta?","Tem tosse seca?","Tem dificuldade respiratória?","Tem dores no corpo?","Tem diarréia?","Esteve em contato nos últimos 14 dias com alguém positivado com COVID-19?","Esteve em locais com aglomeração?",};
+char sintomas_descricao[10][200]={"Tem febre?","Tem dor de cabeÃ§a?","Tem secreÃ§Ã£o nasal ou espirros?","Tem dor ou irritaÃ§Ã£o na garganta?","Tem tosse seca?","Tem dificuldade respiratÃ³ria?","Tem dores no corpo?","Tem diarrÃ©ia?","Esteve em contato nos Ãºltimos 14 dias com alguÃ©m positivado com COVID-19?","Esteve em locais com aglomeraÃ§Ã£o?",};
 cadastro_paciente(){
 	printf("\nPor favor, digite seu CPF: "); //primeira parte
 	scanf("%s", &paciente.cpf);
@@ -29,13 +29,13 @@ cadastro_paciente(){
 	printf("Idade: %d\n", paciente.idade);
 	printf("Sexo: %s\n", paciente.sexo);
 }
-//questionário
+//questionÃ¡rio
 questionario(){
 	int x=0;
 	char resposta;
 	total_pontos=0;
 	while(x<10){
-		printf("\n%s S-sim N-não", sintomas_descricao[x]);
+		printf("\n%s S-sim N-nÃ£o", sintomas_descricao[x]);
 		fflush(stdin); // limpa o cache
 		scanf("%c", &resposta);
 		if(resposta == 's' || resposta == 'S'){
@@ -44,7 +44,7 @@ questionario(){
 		}else if(resposta == 'n' || resposta == 'N'){
 			x++;
 		}else{
-			printf("\nValor inválido, digite novamente...");
+			printf("\nValor invÃ¡lido, digite novamente...");
 		}
 	}
 }
@@ -63,7 +63,7 @@ main(){
 			}else if(total_pontos>=20){
 				printf("\nEncaminhe-se para a ala de RISCO ALTO\n");
 			}else{
-				printf("\nEncaminhe-se para a ala de RISCO MÉDIO\n");
+				printf("\nEncaminhe-se para a ala de RISCO MÃ‰DIO\n");
 			}
 			system("pause");
 			system("cls");
