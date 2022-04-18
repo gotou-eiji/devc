@@ -21,21 +21,21 @@ cadastrarProjeto(){
 	do{
 		system("cls");
 		projetos[sequencia].codigo=sequencia+1;
-		printf("\nDigite o título do projeto: ");
+		printf("\nDigite o tÃ­tulo do projeto: ");
 		fflush(stdin);
 		gets(projetos[sequencia].titulo);
-		printf("\nDigite a descrição do projeto: ");
+		printf("\nDigite a descriÃ§Ã£o do projeto: ");
 		fflush(stdin);
 		gets(projetos[sequencia].descricao);
 		printf("\nDigite o ano do projeto: ");
 		scanf("%d",&projetos[sequencia].ano);
 		printf("\nDigite o status do projeto: ");
 		scanf("%d",&projetos[sequencia].status);
-		printf("\nDigite o responsável: ");
+		printf("\nDigite o responsÃ¡vel: ");
 		fflush(stdin);
 		gets(projetos[sequencia].resposavel);
-		printf("\nProjeto cadastrado com sucesso! Código gerado %d",projetos[sequencia].codigo);
-		printf("\nDeseja cadastrar um novo projeto? S-sim | N-não ");
+		printf("\nProjeto cadastrado com sucesso! CÃ³digo gerado %d",projetos[sequencia].codigo);
+		printf("\nDeseja cadastrar um novo projeto? S-sim | N-nÃ£o ");
 		fflush(stdin);
 		scanf("%c",&continuar);
 		if(continuar=='n'||continuar=='N'){
@@ -51,9 +51,9 @@ todosProjetos(){
 	int x;
 	if(projetos[0].codigo>0){
 		for(x=0;x<sequencia;x++){
-			printf("\nCódigo: %d",projetos[x].codigo);
+			printf("\nCÃ³digo: %d",projetos[x].codigo);
 			printf("\nTitulo: %s",projetos[x].titulo);
-			printf("\nDescrição: %s",projetos[x].descricao);
+			printf("\nDescriÃ§Ã£o: %s",projetos[x].descricao);
 			printf("\nAno: %d",projetos[x].ano);
 			switch(projetos[x].status){
 				case 1:
@@ -63,12 +63,12 @@ todosProjetos(){
 					printf("\nStatus: Fazendo");
 				break;
 				case 3:
-					printf("\nStatus: Concluído");
+					printf("\nStatus: ConcluÃ­do");
 				break;
 				default:
 					printf("\nSem status definido");
 			}
-			printf("\nResponsável: %s\n",projetos[x].resposavel);
+			printf("\nResponsÃ¡vel: %s\n",projetos[x].resposavel);
 		}
 	}else{
 		printf("\nNenhum projeto cadastrado\n");
@@ -80,9 +80,9 @@ porStatus(int status){
 	int x,achou=0;
 	for(x=0;x<sequencia;x++){
 		if(projetos[x].status==status){
-			printf("\nCódigo: %d",projetos[x].codigo);
-			printf("\nTítulo: %s",projetos[x].titulo);
-			printf("\nDescrição: %s",projetos[x].descricao);
+			printf("\nCÃ³digo: %d",projetos[x].codigo);
+			printf("\nTÃ­tulo: %s",projetos[x].titulo);
+			printf("\nDescriÃ§Ã£o: %s",projetos[x].descricao);
 			printf("\nAno: %d",projetos[x].ano);
 			switch(projetos[x].status){
 				case 1:
@@ -92,12 +92,12 @@ porStatus(int status){
 					printf("\nStatus: Fazendo");
 				break;
 				case 3:
-					printf("\nStatus: Concluído");
+					printf("\nStatus: ConcluÃ­do");
 				break;
 				default:
 					printf("\nSem status definido");
 			}
-			printf("\nResponsável: %s\n",projetos[x].resposavel);
+			printf("\nResponsÃ¡vel: %s\n",projetos[x].resposavel);
 			achou=1;
 		}else{
 			achou=0;
@@ -112,9 +112,9 @@ buscaCodigo(int codigo){
 	int x, achou;
 	for(x=0;x<sequencia;x++){
 		if(projetos[x].codigo==codigo){
-			printf("\nCódigo: %d",projetos[x].codigo);
-			printf("\nTítulo: %s",projetos[x].titulo);
-			printf("\nDescrição: %s",projetos[x].descricao);
+			printf("\nCÃ³digo: %d",projetos[x].codigo);
+			printf("\nTÃ­tulo: %s",projetos[x].titulo);
+			printf("\nDescriÃ§Ã£o: %s",projetos[x].descricao);
 			printf("\nAno: %d",projetos[x].ano);
 			switch(projetos[x].status){
 				case 1:
@@ -124,12 +124,12 @@ buscaCodigo(int codigo){
 					printf("\nStatus: Fazendo");
 				break;
 				case 3:
-					printf("\nStatus: Concluído");
+					printf("\nStatus: ConcluÃ­do");
 				break;
 				default:
 					printf("\nSem status definido");
 			}
-			printf("\nResponsável: %s\n",projetos[x].resposavel);
+			printf("\nResponsÃ¡vel: %s\n",projetos[x].resposavel);
 			achou=1;
 			break;
 		}else {
@@ -137,7 +137,7 @@ buscaCodigo(int codigo){
 		}
 	}
 	if(achou==0){
-		printf("\nProjeto não encontrado\n");
+		printf("\nProjeto nÃ£o encontrado\n");
 	}
 	system("pause");
 }
@@ -147,9 +147,9 @@ main(){
 	int op, codigo;
 	do{
 		system("cls");
-		printf("\nDigite \n1 para cadastrar\n2 para imprimir todos os projetos\n3 para imprimir todos os projetos com status A FAZER\n4 para imprimir todos os projetos com status FAZENDO\n5 para imprimir todos os projetos com status CONCLUÍDO\n6 listagem a pensar");
+		printf("\nDigite \n1 para cadastrar\n2 para imprimir todos os projetos\n3 para imprimir todos os projetos com status A FAZER\n4 para imprimir todos os projetos com status FAZENDO\n5 para imprimir todos os projetos com status CONCLUÃDO\n6 listagem a pensar");
 		printf("\n___________________________________________________________");
-		printf("\nDigite a opção desejada: ");
+		printf("\nDigite a opÃ§Ã£o desejada: ");
 		scanf("%d", &op);
 		switch(op){
 			case 1:
@@ -169,12 +169,12 @@ main(){
 			break;
 			case 6:
 				system("cls");
-				printf("\nDigite o código a ser buscado: ");
+				printf("\nDigite o cÃ³digo a ser buscado: ");
 				scanf("%d", &codigo);
 				buscaCodigo(codigo);
 			break;
 			default:
-				printf("\nOpção inválida");
+				printf("\nOpÃ§Ã£o invÃ¡lida");
 		}
 	}while(op!=0);
 }
