@@ -11,6 +11,7 @@ struct produto{
 struct produto produtos[200];
 int sequencia=0;
 
+//1 - função de cadastrar o produto
 cadastrarProduto(){
 	system("cls"); //limpa tela
 	printf("\nDigite o nome do produto: ");
@@ -33,6 +34,49 @@ cadastrarProduto(){
 	system("pause");
 }
 
+//2 - função de entrada do estoque
+entradaEstoque(){
+	int codigo, x, entrada, achou;
+	system("cls");
+	printf("\nDigite o código do produto: ");
+	scanf("%d", &codigo);
+	for(x=0;x<=sequencia;x++){
+		if(produtos[x].codigo==codigo){
+			printf("\nEstoque atual do produto: %d", produtos[x].estoque);
+			printf("\nDigite a quantidade de entrada em estoque: ");
+			scanf("%d", &entrada);
+			produtos[x].estoque+=entrada;
+			printf("\nNovo estoque atualizado: %d\n", produtos[x].estoque);
+			achou=1;
+			break;
+		}else {
+			achou=0;
+		}
+	}
+	if(achou==0){
+		printf("\nProduto não encontrado.\n");
+	}
+	system("pause");
+}
+
+//4 - função de listar o registro de códigos dos produtos
+listaTodos(){
+	int x;
+	system("cls");
+	if(produtos[0].codigo>0){
+		for(x=0;x<sequencia;x++){
+			printf("\n________________________________\n");
+			printf("\nCódigo: %d", produtos[x].codigo);
+			printf("\nNome: %s", produtos[x].nome);
+			printf("\nValor: %0.2lf", produtos[x].valor);
+			printf("\nEstoque: %d\n", produtos[x].estoque);
+		}
+	}else {
+		printf("\nNão há produtos cadastrados.\n");
+	}
+	system("pause");
+}
+
 //principal
 main(){
 	setlocale(LC_ALL, "Portuguese");
@@ -51,13 +95,13 @@ main(){
 				cadastrarProduto();
 			break;
 			case 2:
-				
+				entradaEstoque();
 			break;
 			case 3:
 				
 			break;
 			case 4:
-				
+				listaTodos();
 			break;
 			default:
 				printf("\nOpção inválida.\n");
