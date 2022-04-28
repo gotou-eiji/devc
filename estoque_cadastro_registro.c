@@ -9,7 +9,8 @@ struct produto{
 	double valor;
 };
 struct produto produtos[200];
-int sequencia=0;
+int sequencia=0,nvenda=0;
+double vendas[200];
 
 //1 - função de cadastrar o produto
 cadastrarProduto(){
@@ -103,6 +104,73 @@ listaTodos(){
 	system("pause");
 }
 
+//5 - função de venda
+venda(){
+	int codigo,x,continuar, quantidade, achou=0, op;
+	double total, subtotal;
+	do{
+		system("cls");
+		printf("\nDigite o código do produto: ");
+		scanf("%d", &codigo);
+		for(x=0;x<sequencia;x++){
+			if(produtos[x].codigo==codigo){
+				printf("\nProduto: %s", produtos[x].nome);
+				printf("\nDigite a quantidade do produto: ");
+				scanf("%d", &quantidade);
+				if(produtos[x].valor>0 && produtos[x].estoque>=quantidade){
+					subtotal=quantidade*produtos[x].valor;
+					produtos[x].estoque-=quantidade;
+					printf("\nSubtotal da venda: %0.2lf", subtotal);
+					printf("\nDeseja lançar mais um produto? ");
+					printf("\nDigite 1 - sim | 2 - não\n ");
+					scanf("%d", &continuar);
+					achou=1;
+					break;
+				}else {
+					printf("\nEstoque atual: %d", produtos[x].estoque);
+					printf("\nProduto sem estoque para venda.\n");
+					system("pause");
+				}
+			}else{
+				achou=0;
+			}
+		}
+		if(achou==0){
+			printf("\nProduto não encontrado.");
+		}
+		total+=subtotal;
+	}while(continuar!=2);
+	printf("\nO valor total da venda é: %0.2lf\n", total);
+	printf("\nForma de pagamento: ");
+	printf("\n1 - à vista | 2 - prazo");
+	printf("\nOpção: ");
+	scanf("%d", &op);
+	if(op==2){
+		total=total*1.03;
+		printf("\nValor a pagar: %0.2lf\n", total);
+	}else{
+		printf("\nValor a pagar: %0.2lf\n", total);
+	}
+	vendas[nvenda]=total;
+	nvenda++;
+	system("pause");
+}
+
+//6 - função de listar o registro de vendas
+listaVendas(){
+	int x;
+	system("cls");
+	if(vendas[0]>0){
+		for(x=0;x<sequencia;x++){
+			printf("\n________________________________\n");
+			printf("\nVendas: %d: %0.2lf\n", x+1,vendas[x]);
+		}
+	}else {
+		printf("\nNão há vendas realizadas.\n");
+	}
+	system("pause");
+}
+
 //principal
 main(){
 	setlocale(LC_ALL, "Portuguese");
@@ -114,7 +182,8 @@ main(){
 		printf("\n2 - entrada de estoque. ");
 		printf("\n3 - ajuste de cadastro. ");
 		printf("\n4 - lista todos os cadastros. ");
-		printf("\n5 - venda ");
+		printf("\n5 - venda. ");
+		printf("\n6 - relatório de vendas.");
 		printf("\nOpção: ");
 		scanf("%d", &opcao);
 		switch(opcao){
@@ -129,6 +198,12 @@ main(){
 			break;
 			case 4:
 				listaTodos();
+			break;
+			case 5:
+				venda();
+			break;
+			case 6:
+				listaVendas();
 			break;
 			default:
 				printf("\nOpção inválida.\n");
